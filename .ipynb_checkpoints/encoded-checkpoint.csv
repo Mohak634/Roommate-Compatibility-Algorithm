@@ -1,0 +1,88 @@
+Full Name,Age,Roomate Full Name,Cleanliness Scale,Cleaning Frequency,Bedtime,Noise Tolerance Sleep,Study Frequency,Study Location,Noise Tolerance Study,Personal Space,Party Frequency,Gender_Male,Course of Study_BBA,Course of Study_BFA,Course of Study_BSc,Course of Study_BTech,Course of Study_Btech,Course of Study_Psychology,Year of Study_Fourth Year,Year of Study_Second Year,Year of Study_Third Year,Social Preference_Extroverted (Very social and outgoing),Social Preference_Introverted (Prefer minimal social interaction),Roommate Host_Yes,Coding,Dance,Fitness,Gaming,Listening to Music,Painting,Painting/Drawing,Playing musical instruments,Reading,Sleeping,Socializing/Parties,Sports,Traveling,Watching Movies/TV
+Mohak Chandna,20,Pranshu Tijil,8,3.0,2.0,4,Sometimes,In the room,3,2,2.0,True,False,False,False,False,True,False,False,False,True,False,False,True,0,0,0,1,1,0,0,0,0,0,0,1,0,0
+Paarth Arya,20,Vasumann Lohia,7,3.0,2.0,8,Frequently,In the room,4,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,1,0,0,0,1,0,0
+Chinmay Sharma,20,Ribhav Mittal,8,3.0,2.0,2,Frequently,In the room,5,2,2.0,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,0,1,1,0,0,0,0,0,0,0,0,1
+Ribhav Mittal,20,Chinmay Sharma,8,4.0,2.0,10,Frequently,In the room,6,1,2.0,True,False,False,False,True,False,False,False,False,True,False,True,True,0,0,0,1,1,0,0,0,0,0,0,0,0,1
+Yug Sahni,20,Sarthak Rekhi,10,4.0,2.0,8,Frequently,In the room,3,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,0,0,0,1
+Varun Singh Kharayat,21,Ansh Dua,8,3.0,2.0,6,Frequently,In the library or in other public spaces,7,1,2.0,True,False,False,False,True,False,False,True,False,False,False,False,True,0,0,1,0,1,0,0,0,0,0,0,1,0,0
+Pranshu Tijil,21,Mohak Chandna ,8,3.0,1.0,7,Sometimes,In the room,6,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,False,0,0,0,0,1,0,0,1,0,0,0,1,0,0
+Sharaavanthraj,21,,8,3.0,2.0,3,Frequently,In the room,7,1,2.0,True,False,False,False,True,False,False,True,False,False,False,False,True,0,0,0,0,0,0,0,0,1,0,0,1,0,1
+Sarthak Rekhi,20,Yug Sahni,8,3.0,2.0,10,Sometimes,In the room,7,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,0,0,1,0
+Ansh Dua,21,Varun Singh Kharayat,7,4.0,2.0,1,Sometimes,In the room,5,1,2.0,True,False,False,False,True,False,False,True,False,False,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Mansaaz Singh Bhatia,20,Saksham Arun,10,4.0,1.0,6,Sometimes,In the room,2,1,,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,1,1,0,0,0,0,0,0,1,0,0
+Saksham Arun,20,Mansaz Singh,6,4.0,,10,Constantly,In the room,1,2,,True,False,False,False,True,False,False,False,False,True,False,True,True,0,0,0,0,0,0,0,0,1,0,0,1,0,1
+Vishruti Verma,20,Akshita,8,3.0,1.0,5,Sometimes,In the room,1,1,2.0,False,False,False,False,False,False,True,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,1,0,0,1
+Sanchi Mishra,19,Pranjali Pati,9,3.0,2.0,3,Rarely,In the room,5,1,2.0,False,False,False,False,True,False,False,False,False,True,True,False,False,0,1,0,0,0,0,0,0,0,0,1,0,0,1
+Pranjali Pati,20,Sanchi Mishra,5,1.0,2.0,10,Rarely,In the room,1,1,,False,False,False,False,True,False,False,False,False,True,True,False,True,0,1,0,0,0,0,1,0,0,0,0,0,0,1
+Arjun Kumar,19,,10,3.0,2.0,7,Constantly,In the room,3,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,1,0,0,0,0,0,0,1,1,0,0
+Yuvika Kandari,19,Aaditri Sharma,10,4.0,2.0,1,Rarely,In the room,10,1,0.0,False,False,False,False,True,False,False,False,True,False,True,False,True,0,0,0,0,1,0,0,0,0,0,1,0,0,0
+Aaditri Sharma,20,Yuvika Kandari,10,4.0,2.0,5,Sometimes,In the room,1,2,0.0,False,False,True,False,False,False,False,False,True,False,False,True,True,0,0,0,0,0,0,1,0,0,0,1,0,1,0
+Rajveer Bhatia,20,Sanshray Singh,8,3.0,2.0,5,Frequently,In the room,3,1,,True,True,False,False,False,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Kartik Dubey,20,Dipindrr yadav,10,4.0,2.0,10,Frequently,In the room,6,1,2.0,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,0,0,0,0,0,0,0,0,1,1,0,1
+Vansh Giri,19,Utkarsh Jha,8,4.0,2.0,8,Frequently,In the room,5,2,2.0,True,False,False,False,True,False,False,False,False,True,False,True,True,0,0,0,1,1,0,0,0,0,0,0,0,0,1
+Daksh Singh,18,Aryan singh ,7,4.0,2.0,1,Sometimes,In the room,5,1,2.0,True,False,False,False,True,False,False,False,True,False,False,False,True,0,0,1,1,0,0,0,0,0,0,0,1,0,0
+Aryan Singh,18,Daksh singh ,5,4.0,2.0,1,Sometimes,In the room,5,1,2.0,True,False,False,False,True,False,False,False,True,False,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Sanshray Singh,21,Rajveer Bhatia,9,3.0,2.0,5,Frequently,In the room,3,1,2.0,True,True,False,False,False,False,False,False,False,True,False,False,True,0,0,1,1,0,0,0,0,0,0,0,0,0,1
+Sankalp Dutta,21,Sharaavanthraj,8,4.0,2.0,9,Frequently,In the room,5,1,2.0,True,False,False,False,True,False,False,True,False,False,False,False,True,0,0,1,1,0,0,0,0,0,0,0,1,0,0
+Shagun Verma,20,Khushboo Lal,8,3.0,2.0,3,Rarely,In the room,6,1,0.0,False,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,0,0,0,0,0,0,1,0,1,1
+Khushboo Lal,20,Shagun Verma,10,3.0,2.0,9,Frequently,In the room,8,1,2.0,False,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,1,0,0,1
+Prateek Bhat,20,,9,4.0,1.0,1,Sometimes,In the room,1,2,,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,0,1,1,0,0,0,0,0,1,0,0,0
+Divyansh Maroo,20,Aditya Saigal,10,4.0,2.0,4,Sometimes,In the room,7,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,1,0,1,0,0,0,0,0,0,0,0,1
+Aditya Bhatt,20,Aaditya Arora,8,3.0,2.0,8,Sometimes,In the room,3,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,1,0,1,0,0,0,0,0,0,0,0,1
+Utkarsh Jha,20,Vansh Giri,9,3.0,1.0,10,Sometimes,In the room,7,1,2.0,True,True,False,False,False,False,False,False,False,True,False,False,True,0,0,1,1,0,0,0,0,0,0,0,0,0,1
+Ajitesh,20,Sarthak,8,3.0,2.0,3,Frequently,In the room,7,1,,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,1,0,0,1,0,0
+Snigdha Dixit,19,,7,3.0,2.0,3,Sometimes,In the room,1,1,2.0,False,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,1,0,0,0,1,0,0,0
+Vaibhav Bansal,20,Prit Jain,8,3.0,1.0,7,Frequently,In the room,7,1,0.0,True,False,False,False,True,False,False,False,False,True,False,True,False,1,0,0,0,1,0,0,0,1,0,0,0,0,0
+Prit Jain,20,Vaibhav Bansal,8,3.0,1.0,9,Frequently,In the room,3,1,2.0,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,0,1,1,0,0,0,0,0,0,0,0,1
+Ram Kaushik,20,Nikunj Goyal ,8,3.0,2.0,6,Sometimes,In the room,4,2,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Davis Fernandes,20,,10,3.0,2.0,9,Rarely,In the room,3,1,0.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,1,0,0,0,0,0,0,0,1,0,1
+Saish Adav,20,,6,,2.0,2,Rarely,In the room,1,2,2.0,True,False,False,False,True,False,False,False,False,True,False,False,False,0,0,0,0,1,0,0,0,0,0,0,1,1,0
+Lakshya Vyas,20,Suyash Sinha,10,4.0,1.0,10,Frequently,In the room,1,2,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,1,1,0,0,0,0,0,0,1,0,0
+Khushi,21,Tanvi Jain,8,4.0,2.0,8,Sometimes,In the room,3,1,2.0,False,False,False,True,False,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,0,0,1,1
+Tanvi Jain,20,Khushi,9,4.0,1.0,10,Frequently,In the room,7,1,2.0,False,False,False,True,False,False,False,False,False,True,False,False,True,0,0,0,0,0,0,0,1,1,0,0,0,0,1
+Aditya Saigal,19,Divyansh Maroo,10,4.0,2.0,7,Sometimes,In the room,1,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,1,1,0,0,0,0,0,0,0,0,1
+Utkarsh Maru,20,Ishaan Dhawan,7,3.0,2.0,8,Sometimes,In the room,2,2,,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,0,0,0,0,0,0,1,1,0,1
+Ishaan Dhawan,20,Utkarsh Maru,9,3.0,2.0,3,Sometimes,In the room,4,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,1,0,1,0,0,0,0,0,1,0,0,0
+Shireen Bhardwaj,20,Zeel Samane,8,3.0,2.0,4,Sometimes,In the room,1,1,0.0,False,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Radhika Sharma,20,Mitali Jain,7,3.0,2.0,5,Frequently,In the room,2,1,2.0,False,False,False,False,False,False,False,False,True,False,True,False,True,0,0,0,0,1,0,0,0,0,0,1,0,0,1
+Mitali Jain,20,Radhika Sharma,9,3.0,1.0,8,Frequently,In the room,4,1,2.0,False,False,False,False,False,False,False,False,False,True,False,False,True,0,0,0,0,0,1,0,0,1,0,0,0,0,1
+Rishi Joshi,20,Jishnu chakraborty ,9,3.0,2.0,10,Sometimes,In the room,7,1,0.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,1,0,0,0,0,0,0,0,0,1,0,1
+Amogh Bajpai,18,Rudransh Dwivedi ,8,3.0,2.0,8,Sometimes,In the room,6,2,0.0,True,False,False,False,True,False,False,False,True,False,False,False,True,0,0,0,0,1,0,0,0,1,0,0,0,0,1
+Anusha Mittal,19,Anushka Agarwal,6,3.0,2.0,4,Sometimes,In the room,7,0,2.0,False,False,False,False,True,False,False,False,True,False,False,False,True,0,0,0,0,0,0,0,1,0,1,0,0,0,1
+Anushka Agarwal,18,Anusha Mittal,6,3.0,1.0,7,Sometimes,In the library or in other public spaces,5,1,2.0,False,False,False,False,True,False,False,False,True,False,False,True,True,0,0,1,0,1,0,0,0,1,0,0,0,0,0
+Avya Sharma,20,,8,3.0,1.0,4,Frequently,In the room,6,1,0.0,False,False,False,False,True,False,False,False,True,False,False,False,True,0,0,0,0,0,0,1,0,0,0,0,0,1,1
+Mayank,18,,9,3.0,2.0,2,Sometimes,In the room,6,1,0.0,True,False,False,False,True,False,False,False,False,False,False,False,False,0,0,0,0,1,0,0,0,0,0,0,0,0,1
+Arushi Singh,19,Aditi Srivastava ,8,3.0,2.0,7,Constantly,In the room,5,1,2.0,False,False,False,False,True,False,False,False,True,False,True,False,True,0,0,0,0,1,0,1,0,0,0,0,0,0,1
+Khushi Jain,19,Akanksha Sinha,8,3.0,2.0,2,Sometimes,In the library or in other public spaces,8,0,2.0,False,False,False,False,True,False,False,False,True,False,True,False,True,0,0,0,0,1,0,0,1,1,0,0,0,0,0
+Tanishka Pathak,19,Palakshi Mendiratta,5,3.0,2.0,3,Sometimes,In the room,6,1,0.0,False,False,False,False,False,False,False,False,True,False,False,True,True,0,0,0,0,0,0,1,0,1,0,0,0,0,1
+Manya Agarwal,18,Pavni Gupta ,9,,2.0,1,Frequently,In the room,4,1,0.0,False,False,False,False,True,False,False,False,False,False,False,False,True,0,0,0,0,1,0,0,0,1,0,0,0,0,1
+Shaili Saxena,19,,9,3.0,2.0,6,Sometimes,In the room,8,1,0.0,False,False,False,False,True,False,False,False,True,False,False,False,False,0,0,0,0,1,0,0,0,0,0,0,0,1,1
+Aroh Jha,18,,10,4.0,2.0,4,Frequently,In the room,4,1,2.0,True,False,False,False,True,False,False,False,False,False,False,False,True,0,0,0,1,1,0,0,0,0,0,0,1,0,0
+Rohit Ganguly,20,,7,3.0,1.0,8,Frequently,In the room,9,1,,True,False,False,False,True,False,False,False,True,False,False,False,True,0,0,0,0,1,0,0,0,0,0,1,0,1,0
+Tanisha Srivastava,18,,10,3.0,2.0,1,Frequently,In the room,5,1,0.0,False,False,False,False,True,False,False,False,False,False,False,False,True,0,0,0,0,1,0,0,0,1,0,0,0,1,0
+Aarush Dayal,18,,10,3.0,1.0,3,Frequently,In the room,1,2,0.0,True,False,False,False,True,False,False,False,False,False,False,False,False,0,0,0,0,1,0,0,0,1,0,0,0,0,1
+Sanskriti Saxena,20,,10,3.0,2.0,7,Constantly,In the room,3,1,2.0,False,False,False,False,True,False,False,False,True,False,True,False,False,0,0,0,0,1,0,0,0,0,0,1,0,0,1
+Paarshav Mehta,20,Rhythm Mamtani,8,3.0,2.0,3,Sometimes,In the room,1,1,2.0,True,False,False,False,True,False,False,False,False,True,True,False,False,0,0,1,0,0,0,0,0,0,0,0,1,0,1
+Prithviraj,20,,9,4.0,2.0,4,Rarely,In the room,2,1,2.0,True,False,False,False,True,False,False,False,True,False,False,False,True,0,0,1,1,0,0,0,0,0,0,0,0,0,1
+Bhavya Jaggi,19,Devansh Kothari,9,3.0,2.0,5,Frequently,In the room,7,1,2.0,True,False,False,False,True,False,False,False,True,False,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Aaditya Arora,21,Aditya Bhatt,10,4.0,2.0,7,Sometimes,In the room,2,2,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Bhumi Kumari,20,Anshi Sagani,10,3.0,1.0,4,Frequently,In the library or in other public spaces,1,2,,False,False,False,False,True,False,False,False,True,False,True,False,True,0,0,0,0,1,0,0,0,0,0,1,0,0,1
+Anjor Aggarwal,20,,8,4.0,2.0,7,Sometimes,In the room,4,1,2.0,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,0,0,0,0,0,0,0,0,1,1,0,1
+Anshi Sagani,21,Bhumi Kumari,10,,2.0,6,Constantly,In the room,1,1,0.0,False,False,False,False,True,False,False,True,False,False,True,False,True,0,0,0,0,0,0,1,0,0,0,1,0,1,0
+Vishal,18,,10,3.0,2.0,10,Constantly,In the room,2,0,0.0,True,False,False,False,True,False,False,False,False,False,False,True,False,0,0,0,0,0,0,0,0,1,0,0,1,0,1
+Aditya Raj Mathur,20,,9,4.0,2.0,9,Frequently,In the room,8,2,2.0,True,False,False,False,True,False,False,False,False,False,False,True,False,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Vidhu Gupta,18,,10,3.0,2.0,8,Sometimes,In the room,9,1,0.0,False,False,False,False,True,False,False,False,False,False,False,False,True,0,0,0,0,1,0,0,0,0,0,0,0,1,1
+Akshat Ajmera,20,,9,3.0,2.0,5,Constantly,In the library or in other public spaces,3,1,2.0,True,True,False,False,False,False,False,False,False,True,False,False,True,0,0,0,0,1,0,0,0,0,0,1,1,0,0
+Utkarsh Kakade,21,Arman Singh,10,4.0,2.0,5,Sometimes,In the room,1,1,0.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,0,0,0,0,0,0,1,0,0,1,0,1
+Devansh Kothari,19,Bhavya Jaggi,10,4.0,2.0,8,Sometimes,In the room,8,1,2.0,True,False,False,False,True,False,False,False,True,False,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,1,0
+Jishnu Chakraborty,20,Rishi Joshi,9,4.0,2.0,5,Constantly,In the room,8,1,2.0,True,False,False,True,False,False,False,False,False,True,False,False,True,0,0,0,1,1,0,0,0,0,0,0,1,0,0
+Palakshi Mendiratta,20,Tanishka Pathak,8,3.0,2.0,10,Rarely,In the room,3,1,0.0,False,False,False,False,True,False,False,False,False,True,False,True,True,0,0,0,0,0,0,1,0,0,0,0,1,0,1
+Devaansh Makhijani,20,,8,3.0,2.0,10,Sometimes,In the room,1,1,,True,False,False,False,True,False,False,False,False,True,False,False,False,0,0,0,0,1,0,0,0,1,0,0,0,0,1
+Garv Bhalla,20,,8,3.0,2.0,5,Frequently,In the library or in other public spaces,3,1,2.0,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,1,0,0,0,0,0,0,0,0,1,0,1
+Yashovardhan Pratap Singh,20,Shaurya Singh,10,3.0,2.0,6,Sometimes,In the room,1,1,2.0,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,1,0,0,0,0,0,0,0,0,0,1,1
+Vatsal Birla,20,,7,3.0,2.0,10,Sometimes,In the room,1,1,2.0,True,False,False,False,True,False,False,False,False,True,True,False,True,0,0,1,0,0,0,0,0,0,0,0,1,0,1
+Rhythm Mamtani,21,Paarshav Mehta,6,,2.0,2,Sometimes,In the room,4,1,2.0,True,False,False,False,True,False,False,False,False,True,False,True,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Aryan Chowdhary,21,,9,3.0,2.0,8,Sometimes,In the room,8,1,2.0,True,False,False,False,True,False,False,False,False,True,False,False,True,0,0,1,0,0,0,0,0,0,0,0,1,0,1
+Varun Yadav,21,,10,4.0,1.0,8,Frequently,In the room,5,1,2.0,True,False,False,False,True,False,False,True,False,False,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Saharsh Vaibhav Lal,18,Bala Bhaskar,6,,2.0,5,Frequently,In the library or in other public spaces,1,1,2.0,True,False,False,False,True,False,False,False,False,False,False,False,True,0,0,0,0,1,0,0,0,0,0,0,1,0,1
+Bala Bhaskar,18,Saharsh Vaibhav Lal,10,3.0,,8,Sometimes,In the room,5,2,2.0,True,True,False,False,False,False,False,False,False,False,False,False,True,0,0,0,1,0,0,0,0,1,0,0,1,0,0
