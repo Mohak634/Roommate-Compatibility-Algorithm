@@ -1,0 +1,19 @@
+Question,Factor,Normalized Weight
+Cleanliness Scale,Cleanliness,0.129
+Cleaning Frequency,Cleanliness,0.129
+Bedtime,Sleep Schedule,0.115
+Noise Tolerance Sleep,Sleep Schedule,0.115
+Noise Tolerance Study,Study Habits,0.109
+Study Frequency,Study Habits,0.109
+Study Location,Study Habits,0.109
+Social Preference,Social Preferences,0.112
+Roommate Host,Social Preferences,0.112
+Party Frequency,Partying and Social Gatherings,0.114
+Hobby 1,Shared Interests and Hobbies,0.113
+Hobby 2,Shared Interests and Hobbies,0.113
+Hobby 3,Shared Interests and Hobbies,0.113
+Personal Space,Mutual Respect for Space,0.121
+Mutual Friends,Mutual Friends,0.112
+Year of Study,Shared Academic Goals or Interests,0.108
+Course of Study,Shared Academic Goals or Interests,0.108
+Roommate Compatibility Rating,Roommate Pairing,1.0
