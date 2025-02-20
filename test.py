@@ -2,10 +2,8 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import os
-
 
 # Enable GPU usage
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
@@ -37,20 +35,31 @@ weighted_X = X * feature_weights
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(weighted_X)
 
-# Load new user (first record in encoded.csv)
-new_user = X_scaled[0]
+df["Full Name"] = df["Full Name"].astype(str)
+
+# Ask for user input
+reference_name = input("Enter the full name of the reference user: ")
+if reference_name not in df["Full Name"].values:
+    print("User not found in dataset.")
+    exit()
+
+# Get index of reference user
+user_index = df[df["Full Name"] == reference_name].index[0]
+new_user = X_scaled[user_index]
 
 # Check if model or clustering file exists
-
 if os.path.exists("roommate_model.h5"):
     # Load trained neural network model
     model = keras.models.load_model("roommate_model.h5", compile=False)
-    predictions = model.predict(X_scaled).flatten()
-    df["Compatibility Score"] = predictions
+    feature_representations = model.predict(X_scaled)
+
+    # Compute similarity between selected user and others
+    user_representation = feature_representations[user_index]
+    df["Compatibility Score"] = 1 - np.linalg.norm(feature_representations - user_representation, axis=1)
 else:
     # Load clustering results
     clustered_df = pd.read_csv("clustered_roommates.csv")
-    new_user_cluster = clustered_df.loc[0, "Cluster"]
+    new_user_cluster = clustered_df.loc[user_index, "Cluster"]
     same_cluster = clustered_df[clustered_df["Cluster"] == new_user_cluster].copy()
 
     # Compute weighted similarity scores
@@ -61,8 +70,12 @@ else:
     same_cluster["Compatibility Score"] = weighted_similarity(new_user, same_cluster_features)
     df = same_cluster
 
+# Normalize compatibility scores
+min_max_scaler = MinMaxScaler()
+df["Compatibility Score"] = min_max_scaler.fit_transform(df[["Compatibility Score"]])
+
 # Sort and get top 10 matches
-top_matches = df.sort_values(by="Compatibility Score", ascending=False).head(10)
+top_matches = df.sort_values(by="Compatibility Score", ascending=False).head(20)
 top_matches.to_csv("top_matches.csv", index=False)
-print("Top 10 roommates:")
+print("Top 20 roommates:")
 print(top_matches[["Full Name", "Compatibility Score"]])
