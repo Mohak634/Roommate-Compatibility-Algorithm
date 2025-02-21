@@ -4,6 +4,8 @@ import tensorflow as tf
 from tensorflow import keras
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Enable GPU usage
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
@@ -74,8 +76,55 @@ else:
 min_max_scaler = MinMaxScaler()
 df["Compatibility Score"] = min_max_scaler.fit_transform(df[["Compatibility Score"]])
 
-# Sort and get top 10 matches
+# Sort and get top 20 matches
 top_matches = df.sort_values(by="Compatibility Score", ascending=False).head(20)
-top_matches.to_csv("top_matches.csv", index=False)
-print("Top 20 roommates:")
-print(top_matches[["Full Name", "Compatibility Score"]])
+
+# Display top matches one by one
+def plot_radar_chart(reference, match, match_name):
+    """ Generate and display radar plot comparing the reference user and a match. """
+    categories = np.array(feature_columns)  # Feature names
+    values_ref = reference
+    values_match = match
+
+    angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()
+    values_ref = np.concatenate((values_ref, [values_ref[0]]))
+    values_match = np.concatenate((values_match, [values_match[0]]))
+    angles += angles[:1]
+
+    fig, ax = plt.subplots(figsize=(6,6), subplot_kw=dict(polar=True))
+
+    ax.fill(angles, values_ref, color='blue', alpha=0.3, label='You')
+    ax.fill(angles, values_match, color='red', alpha=0.3, label=match_name)
+
+    ax.set_xticks(angles[:-1])
+    ax.set_xticklabels(categories, fontsize=8, rotation=45, ha="right")
+
+    plt.title(f"Comparison: You vs. {match_name}", fontsize=12)
+    plt.legend()
+    plt.show()
+
+# Loop through top matches
+for _, row in top_matches.iterrows():
+    match_name = row["Full Name"]
+    match_index = df[df["Full Name"] == match_name].index[0]
+
+    # Extract relevant data
+    match_features = X_scaled[match_index]
+
+    # Find the 5-7 most similar factors
+    similarity_diffs = np.abs(new_user - match_features)
+    top_factor_indices = np.argsort(similarity_diffs)[:7]  # 7 smallest differences
+    top_factors = [feature_columns[i] for i in top_factor_indices]
+
+    # Display information
+    print(f"\nMatch: {match_name}")
+    print(f"Compatibility Score: {row['Compatibility Score']:.4f}")
+    print("Most similar factors:", ", ".join(top_factors))
+
+    # Show radar plot
+    plot_radar_chart(new_user, match_features, match_name)
+
+    # Wait for user input before showing the next match
+    input("Press Enter to see the next match...")
+
+print("Top 20 matches shown.")

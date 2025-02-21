@@ -65,3 +65,4 @@ df_encoded = pd.concat([df, encoded_df], axis=1)
 df_encoded.to_csv("encoded.csv", index=False, na_rep="0")  # Preserve 0 values
 
 print("Encoding completed successfully. Saved as 'encoded.csv'.")
+
