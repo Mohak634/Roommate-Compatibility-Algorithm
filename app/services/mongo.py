@@ -1,6 +1,7 @@
 import os
 import bcrypt
 from datetime import datetime
+from urllib.parse import quote_plus
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
@@ -9,17 +10,38 @@ from pymongo.errors import DuplicateKeyError
 # Load environment variables
 load_dotenv()
 
-def connect_to_mongo():
+def _build_uri():
+    """Prefer an explicit MONGODB_URI; otherwise assemble one from parts,
+    URL-encoding the username/password so special chars (@ : / etc.) work."""
     uri = os.getenv("MONGODB_URI")
-    if not uri:
-        raise EnvironmentError("MONGODB_URI not found in .env file.")
+    if uri:
+        return uri
+
+    user = os.getenv("MONGO_USER")
+    password = os.getenv("MONGO_PASS")
+    cluster = os.getenv("MONGO_CLUSTER")
+    app_name = os.getenv("MONGO_APP", "DormMate0")
+
+    if not (user and password and cluster):
+        raise EnvironmentError(
+            "Set MONGODB_URI, or MONGO_USER/MONGO_PASS/MONGO_CLUSTER in .env."
+        )
+
+    return (
+        f"mongodb+srv://{quote_plus(user)}:{quote_plus(password)}@{cluster}"
+        f"/?appName={quote_plus(app_name)}"
+    )
+
+
+def connect_to_mongo():
+    uri = _build_uri()
     try:
         client = MongoClient(uri, server_api=ServerApi("1"))
         client.admin.command("ping")
-        print("✅ Connected to MongoDB.")
+        print("[OK] Connected to MongoDB.")
         return client
     except Exception as e:
-        print("❌ MongoDB connection failed:", str(e))
+        print("[ERROR] MongoDB connection failed:", str(e))
         return None
 
 def hash_password(password: str) -> str:
