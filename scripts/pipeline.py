@@ -1,7 +1,7 @@
 """Original offline data pipeline: Google Sheet import, cleaning, encoding,
 K-means and the neural-network baseline. Not part of the deployed API.
 Run pieces from the repo root, e.g. `python -c "from scripts.pipeline import clean_data; clean_data()"`.
-Needs requirements-dev.txt.
+Needs requirements-pipeline.txt.
 """
 import gspread
 import pandas as pd

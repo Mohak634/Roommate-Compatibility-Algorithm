@@ -19,3 +19,11 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Real survey data stays out of the repo (see scripts/evaluate_matching.py)
+data/private/
+app/data/RawData.csv
+app/data/rawData.csv
+app/data/Cleaned.csv
+app/data/encoded.csv
+app/data/clustered_roommates.csv
