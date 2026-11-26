@@ -1,21 +1,18 @@
-"""User survey answers, stored in the (pre-existing) dormmate.preferences
-collection in the survey's raw vocabulary so they encode identically to the
-Google-Forms training data.
+"""Validate and save a user's survey answers."""
 
-Doc shape: { username, answers: {<question key>: <raw answer>}, updated_at }
-Saving also flips users.profile_complete to True.
-"""
+from __future__ import annotations
 
-from datetime import datetime, timezone
+from fastapi import HTTPException
 
-from app.services.mongo import connect_to_mongo
+from app.services import profile_store
 from app.services.survey import get_survey_schema
 
 
-def _validate(answers):
-    """Light validation against the schema. Returns a list of problems."""
-    schema = {q["key"]: q for q in get_survey_schema()["questions"]}
-    problems = []
+def validate(answers: dict) -> list[str]:
+    """Problems with the answers against the survey schema (empty list if fine)."""
+    questions = get_survey_schema()["questions"]
+    schema = {q["key"]: q for q in questions}
+    problems = [f"Missing answer: {q['label']}" for q in questions if q["key"] not in answers]
     for key, value in answers.items():
         q = schema.get(key)
         if q is None:
@@ -23,7 +20,7 @@ def _validate(answers):
             continue
         t = q["type"]
         if t in ("scale", "number"):
-            if not isinstance(value, (int, float)):
+            if not isinstance(value, (int, float)) or isinstance(value, bool):
                 problems.append(f"'{key}' must be a number")
             elif not (q.get("min", float("-inf")) <= value <= q.get("max", float("inf"))):
                 problems.append(f"'{key}' out of range")
@@ -31,8 +28,8 @@ def _validate(answers):
             if value not in q["options"]:
                 problems.append(f"'{key}' has invalid option '{value}'")
         elif t == "multi":
-            if not isinstance(value, list):
-                problems.append(f"'{key}' must be a list")
+            if not isinstance(value, list) or not value:
+                problems.append(f"'{key}' must be a non-empty list")
             elif len(value) > q.get("maxSelections", len(q["options"])):
                 problems.append(f"'{key}' allows at most {q['maxSelections']} selections")
             elif any(v not in q["options"] for v in value):
@@ -43,41 +40,8 @@ def _validate(answers):
     return problems
 
 
-def save_profile(username, answers):
-    problems = _validate(answers)
+def save(username: str, answers: dict) -> dict:
+    problems = validate(answers)
     if problems:
-        return {"success": False, "message": "; ".join(problems)}
-
-    client = connect_to_mongo()
-    if not client:
-        return {"success": False, "message": "MongoDB connection failed."}
-    try:
-        db = client["dormmate"]
-        db["preferences"].replace_one(
-            {"username": username},
-            {
-                "username": username,
-                "answers": answers,
-                "updated_at": datetime.now(timezone.utc),
-            },
-            upsert=True,
-        )
-        db["users"].update_one(
-            {"username": username}, {"$set": {"profile_complete": True}}
-        )
-        return {"success": True, "message": "Profile saved."}
-    finally:
-        client.close()
-
-
-def get_profile(username):
-    client = connect_to_mongo()
-    if not client:
-        return {"success": False, "message": "MongoDB connection failed."}
-    try:
-        doc = client["dormmate"]["preferences"].find_one({"username": username})
-        if not doc:
-            return {"success": True, "answers": None}
-        return {"success": True, "answers": doc.get("answers", {})}
-    finally:
-        client.close()
+        raise HTTPException(status_code=422, detail="; ".join(problems))
+    return profile_store.save_user_profile(username, answers)

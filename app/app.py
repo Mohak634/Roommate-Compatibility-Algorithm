@@ -1,3 +1,4 @@
+import os
 import sys
 
 from fastapi import FastAPI
@@ -14,12 +15,14 @@ for stream in (sys.stdout, sys.stderr):
 
 app = FastAPI(title="DormMate API")
 
-# Allow local dev frontends (Flutter web uses a dynamic port; Next.js uses
-# 3000). Auth is stateless JSON (no cookies), so a wildcard origin is fine
-# here — keep allow_credentials False to satisfy the browser's CORS rules.
+# CORS: in production set ALLOWED_ORIGINS to a comma-separated list of the
+# frontend URLs (e.g. the deployed Flutter web app). Unset means "*" for local
+# dev (Flutter web uses a dynamic port). Auth is stateless JSON (no cookies),
+# so keep allow_credentials False to satisfy the browser's CORS rules.
+_origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_origins,
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],

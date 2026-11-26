@@ -1,3 +1,6 @@
+# Runtime dependencies for the DormMate API (what Railway installs).
+# The offline data pipeline and validation need requirements-dev.txt too.
+
 # Web framework
 fastapi==0.110.0
 uvicorn[standard]==0.27.1
@@ -7,17 +10,8 @@ pydantic==2.6.4
 pymongo==4.6.2
 python-dotenv==1.0.1
 bcrypt==4.1.2
+PyJWT==2.8.0
 
-# Data / ML
+# Data
 numpy==1.26.4
 pandas==2.1.4
-scikit-learn==1.4.1.post1
-tensorflow==2.15.0
-
-# Plotting (used by legacy desktop functions)
-matplotlib==3.8.3
-seaborn==0.13.2
-
-# Google Sheets ingestion
-gspread==6.0.2
-oauth2client==4.1.3

@@ -1,0 +1,9 @@
+# The original offline pipeline (scripts/pipeline.py): Google Sheet import,
+# plots and the neural-network baseline in scripts/evaluate_matching.py.
+-r requirements-dev.txt
+
+tensorflow==2.15.0
+matplotlib==3.8.3
+seaborn==0.13.2
+gspread==6.0.2
+oauth2client==4.1.3

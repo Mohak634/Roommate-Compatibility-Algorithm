@@ -1,6 +1,11 @@
 """Survey question schema served to the Flutter app.
 
-Options come straight from main_script's ORDINAL_MAPPINGS / CATEGORY_OPTIONS,
+Pair-level questions from the original form (how compatible you are with your
+current roommate, how many friends you share with them) are not asked: they
+describe an existing pair, not the person, and the matching engine never uses
+them.
+
+Options come straight from app.core.vocab (ORDINAL_MAPPINGS / CATEGORY_OPTIONS),
 so the form vocabulary can never drift from what encode_data understands.
 Question labels mirror the original Google Form wording (clean_data).
 
@@ -8,7 +13,7 @@ Question types: scale (int slider), choice (single select), multi (multi
 select, maxSelections), number (free int), text (free string).
 """
 
-from app.core.main_script import CATEGORY_OPTIONS, HOBBY_OPTIONS, ORDINAL_MAPPINGS
+from app.core.vocab import CATEGORY_OPTIONS, HOBBY_OPTIONS, ORDINAL_MAPPINGS
 
 
 def _ordinal_options(key):
@@ -79,9 +84,6 @@ def get_survey_schema():
             {"key": "Party Frequency", "section": "Social", "type": "choice",
              "label": "How often do you attend or host parties?",
              "options": _ordinal_options("Party Frequency")},
-            {"key": "Mutual Friends", "section": "Social", "type": "choice",
-             "label": "How many mutual friends do you and your roommate share?",
-             "options": _ordinal_options("Mutual Friends")},
 
             # --- Guests & Space ---
             {"key": "Roommate Host", "section": "Guests & Space", "type": "choice",
@@ -95,10 +97,5 @@ def get_survey_schema():
             {"key": "Hobbies", "section": "About You", "type": "multi",
              "label": "What are your top 3 hobbies?",
              "options": hobbies, "maxSelections": 3},
-            {"key": "Roommate Compatibility Rating", "section": "About You",
-             "type": "scale",
-             "label": "How would you rate your overall compatibility as a roommate?",
-             "help": "Honest self-rating, 1-10",
-             "min": 1, "max": 10},
         ],
     }

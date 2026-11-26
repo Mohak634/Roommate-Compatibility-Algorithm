@@ -1,116 +1,73 @@
-"""Likes ("express interest") and mutual-match queries, backed by MongoDB.
+"""Likes and mutual matches.
 
-Collection: dormmate.interests
-  { from_user, to_user, action: "like" | "skip", score, created_at,
-    demo_auto: bool  # present on auto-reciprocated likes (demo behavior) }
+Collection: interests { from_user, to_user, action: "like" | "skip", score, created_at, demo_auto }
 
-Demo behavior: dataset people can't swipe, so when a real user likes someone
-with a compatibility score >= AUTO_RECIPROCATE_THRESHOLD, we insert the
-reciprocal like automatically (flagged with demo_auto) so the mutual-match
-flow is demonstrable end to end.
+Sample profiles can't respond, so a like on a sample profile whose server-side
+score is at least AUTO_LIKE_SCORE is answered automatically (flagged
+demo_auto). Likes between real users need both people.
 """
+
+from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from app.services.mongo import connect_to_mongo
+from fastapi import HTTPException
 
-AUTO_RECIPROCATE_THRESHOLD = 85.0
+from app.core import matching
+from app.services import profile_store
+from app.services.db import get_db
 
-
-def _col(client):
-    col = client["dormmate"]["interests"]
-    col.create_index([("from_user", 1), ("to_user", 1)], unique=True)
-    return col
+AUTO_LIKE_SCORE = 70.0
 
 
-def record_interest(from_user, to_user, action, score=None):
-    """Upsert a like/skip. Returns whether this created a mutual match."""
-    client = connect_to_mongo()
-    if not client:
-        return {"success": False, "message": "MongoDB connection failed."}
-    try:
-        col = _col(client)
-        now = datetime.now(timezone.utc)
-        col.replace_one(
-            {"from_user": from_user, "to_user": to_user},
-            {
-                "from_user": from_user,
-                "to_user": to_user,
-                "action": action,
-                "score": score,
-                "created_at": now,
-            },
-            upsert=True,
-        )
-
-        mutual = False
-        if action == "like":
-            reverse = col.find_one(
-                {"from_user": to_user, "to_user": from_user, "action": "like"}
-            )
-            if reverse:
-                mutual = True
-            elif score is not None and score >= AUTO_RECIPROCATE_THRESHOLD:
-                col.replace_one(
-                    {"from_user": to_user, "to_user": from_user},
-                    {
-                        "from_user": to_user,
-                        "to_user": from_user,
-                        "action": "like",
-                        "score": score,
-                        "demo_auto": True,
-                        "created_at": now,
-                    },
-                    upsert=True,
-                )
-                mutual = True
-
-        return {"success": True, "mutual": mutual}
-    finally:
-        client.close()
+def _db():
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not configured.")
+    return db
 
 
-def _entry(doc, mutual):
-    return {
-        "name": doc["to_user"],
-        "score": doc.get("score"),
-        "mutual": mutual,
-        "created_at": doc["created_at"].isoformat() if doc.get("created_at") else None,
-    }
+def is_mutual(username: str, profile_id: str) -> bool:
+    db = _db()
+    return bool(db.interests.find_one({"from_user": username, "to_user": profile_id, "action": "like"})
+                and db.interests.find_one({"from_user": profile_id, "to_user": username, "action": "like"}))
 
 
-def get_sent(user):
-    """Likes this user has sent, each flagged mutual/pending."""
-    client = connect_to_mongo()
-    if not client:
-        return {"success": False, "message": "MongoDB connection failed."}
-    try:
-        col = _col(client)
-        sent = list(col.find({"from_user": user, "action": "like"}))
-        if not sent:
-            return {"success": True, "sent": []}
-
-        names = [d["to_user"] for d in sent]
-        reciprocals = {
-            d["from_user"]
-            for d in col.find(
-                {"from_user": {"$in": names}, "to_user": user, "action": "like"}
-            )
-        }
-        return {
-            "success": True,
-            "sent": [_entry(d, d["to_user"] in reciprocals) for d in sent],
-        }
-    finally:
-        client.close()
+def record(username: str, profile_id: str, action: str) -> dict:
+    if action not in ("like", "skip"):
+        raise HTTPException(status_code=422, detail="action must be 'like' or 'skip'.")
+    if profile_id == username:
+        raise HTTPException(status_code=400, detail="You can't like yourself.")
+    me, other = profile_store.get_profile(username), profile_store.get_profile(profile_id)
+    if me is None:
+        raise HTTPException(status_code=409, detail="Finish the survey first.")
+    if other is None:
+        raise HTTPException(status_code=404, detail="Profile not found.")
+    db, now = _db(), datetime.now(timezone.utc)
+    s = round(matching.score(me["answers"], other["answers"]), 1)
+    db.interests.replace_one({"from_user": username, "to_user": profile_id},
+                             {"from_user": username, "to_user": profile_id, "action": action,
+                              "score": s, "created_at": now}, upsert=True)
+    if action == "like" and other.get("is_sample") and s >= AUTO_LIKE_SCORE:
+        db.interests.replace_one({"from_user": profile_id, "to_user": username},
+                                 {"from_user": profile_id, "to_user": username, "action": "like",
+                                  "score": s, "demo_auto": True, "created_at": now}, upsert=True)
+    return {"mutual": action == "like" and is_mutual(username, profile_id), "score": s}
 
 
-def get_mutual(user):
-    """Pairs where both directions are likes."""
-    result = get_sent(user)
-    if not result["success"]:
-        return result
-    return {
-        "success": True,
-        "mutual": [e for e in result["sent"] if e["mutual"]],
-    }
+def sent(username: str) -> list[dict]:
+    db = _db()
+    likes = list(db.interests.find({"from_user": username, "action": "like"}))
+    back = {d["from_user"] for d in db.interests.find(
+        {"from_user": {"$in": [d["to_user"] for d in likes]}, "to_user": username, "action": "like"})}
+    out = []
+    for d in sorted(likes, key=lambda d: d["created_at"], reverse=True):
+        p = profile_store.get_profile(d["to_user"])
+        if p:
+            out.append({"id": p["id"], "name": p.get("name"), "photo_url": p.get("photo_url"),
+                        "score": d.get("score"), "mutual": d["to_user"] in back})
+    return out
+
+
+def mutual(username: str) -> list[dict]:
+    return [e for e in sent(username) if e["mutual"]]
