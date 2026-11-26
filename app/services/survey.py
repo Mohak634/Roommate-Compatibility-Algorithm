@@ -1,6 +1,6 @@
 """Survey question schema served to the Flutter app.
 
-Options come straight from main_script's ORDINAL_MAPPINGS / CATEGORY_OPTIONS,
+Options come straight from app.core.vocab (ORDINAL_MAPPINGS / CATEGORY_OPTIONS),
 so the form vocabulary can never drift from what encode_data understands.
 Question labels mirror the original Google Form wording (clean_data).
 
@@ -8,7 +8,7 @@ Question types: scale (int slider), choice (single select), multi (multi
 select, maxSelections), number (free int), text (free string).
 """
 
-from app.core.main_script import CATEGORY_OPTIONS, HOBBY_OPTIONS, ORDINAL_MAPPINGS
+from app.core.vocab import CATEGORY_OPTIONS, HOBBY_OPTIONS, ORDINAL_MAPPINGS
 
 
 def _ordinal_options(key):

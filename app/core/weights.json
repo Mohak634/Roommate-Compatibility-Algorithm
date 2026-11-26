@@ -1,0 +1,51 @@
+{
+  "source": "50% logistic regression fitted on real roommate pairs vs random non-pairs, 50% hand-set weights (scripts/evaluate_matching.py)",
+  "weights": {
+    "Cleanliness Scale": 0.0402,
+    "Cleaning Frequency": 0.0638,
+    "Bedtime": 0.0359,
+    "Noise Tolerance Sleep": 0.0359,
+    "Study Frequency": 0.0799,
+    "Study Location": 0.0344,
+    "Noise Tolerance Study": 0.0448,
+    "Social Preference": 0.0824,
+    "Roommate Host": 0.0656,
+    "Party Frequency": 0.1486,
+    "Hobbies": 0.0899,
+    "Personal Space": 0.0377,
+    "Year of Study": 0.207,
+    "Course of Study": 0.0337
+  },
+  "fitted": {
+    "Cleanliness Scale": 0.0,
+    "Cleaning Frequency": 0.0472,
+    "Bedtime": 0.0,
+    "Noise Tolerance Sleep": 0.0,
+    "Study Frequency": 0.0918,
+    "Study Location": 0.0009,
+    "Noise Tolerance Study": 0.0217,
+    "Social Preference": 0.095,
+    "Roommate Host": 0.0613,
+    "Party Frequency": 0.2261,
+    "Hobbies": 0.1094,
+    "Personal Space": 0.0,
+    "Year of Study": 0.3467,
+    "Course of Study": 0.0
+  },
+  "hand_set": {
+    "Cleanliness Scale": 0.0805,
+    "Cleaning Frequency": 0.0805,
+    "Bedtime": 0.0717,
+    "Noise Tolerance Sleep": 0.0717,
+    "Study Frequency": 0.068,
+    "Study Location": 0.068,
+    "Noise Tolerance Study": 0.068,
+    "Social Preference": 0.0699,
+    "Roommate Host": 0.0699,
+    "Party Frequency": 0.0711,
+    "Hobbies": 0.0705,
+    "Personal Space": 0.0755,
+    "Year of Study": 0.0674,
+    "Course of Study": 0.0674
+  }
+}
